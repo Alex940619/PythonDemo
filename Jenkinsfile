@@ -1,10 +1,10 @@
 pipeline {
-    agent any 
+    agent none 
     stages {
         stage('Build') { 
             agent {
                 docker {
-                    image 'python:2-alpine' 
+                    image 'python:2-alpine -v C:\Users\Alex\Desktop\Demo Python\simple-python-pyinstaller-app:C:\Program Files\Docker\Docker' 
                 }
             }
             steps {
