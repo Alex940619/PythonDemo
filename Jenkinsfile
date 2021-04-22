@@ -11,7 +11,7 @@ pipeline{
                 steps{
 
 
-                    bat 'anterior=$[BUILD_NUMBER-1]'
+                    
                     bat 'primer=Demo'
                     
                     bat 'echo actualmente con la ejecucion $BUILD_NUMBER, ejecucion anterior $[BUILD_NUMBER-1]'
