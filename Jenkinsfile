@@ -3,6 +3,7 @@ pipeline{
 
         environment {
         def primer="Demo"
+        def anterior="$anterior"
 
         }
         stages{
