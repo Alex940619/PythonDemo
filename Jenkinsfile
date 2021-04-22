@@ -1,19 +1,35 @@
-pipeline {
-    agent any 
-    stages {
-        stage('Build') { 
-            agent {
-                docker {
-                    image 'python:2-alpine -v C:\Users\Alex\Desktop\Demo Python\simple-python-pyinstaller-app:C:\Program Files\Docker\Docker' 
-                }
-            }
-            steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py' 
+pipeline{
+ agent any
+
+        environment {
+        def primer="Demo"
+
+        }
+        stages{
+            stage('Build') {
+                steps{
+
+
+                    bat 'anterior=$[BUILD_NUMBER-1]'
+                    bat 'primer=Demo'
+                    
+                    bat 'echo actualmente con la ejecucion $BUILD_NUMBER, ejecucion anterior $[BUILD_NUMBER-1]'
+                    bat 'echo Ejecucion actual $BUILD_NUMBER'
+
+                    bat 'echo actualmente con la ejecucion $BUILD_NUMBER'
+                    bat 'echo $primer'
+
+                    //Construccion de la imagen a apartir de los cambios generados
+                    bat """docker build -t "$primer"demo:$BUILD_NUMBER ."""
+
+
+                    //Iniciar el contenedor
+                    bat """docker run -i -p 8283:9000 --name "$pimer"Container$BUILD_NUMBER -d -e TIME_ZONE=America/Bogota "$primer"demo:$BUILD_NUMBER"""
+
             }
         }
     }
 }
-
 
 
 
