@@ -17,11 +17,11 @@ pipeline{
                     bat 'echo $primer'
 
                     //Construccion de la imagen a apartir de los cambios generados
-                    bat """docker build -t "$primer"demo:$BUILD_NUMBER ."""
+                    bat 'docker build -t "$primer"demo:$BUILD_NUMBER .'
 
 
                     //Iniciar el contenedor
-                    bat """docker run -i -p 8283:9000 --name "$pimer"Container$BUILD_NUMBER -d -e TIME_ZONE=America/Bogota "$primer"demo:$BUILD_NUMBER"""
+                    bat 'docker run -i -p 8283:9000 --name "$pimer"Container$BUILD_NUMBER -d -e TIME_ZONE=America/Bogota "$primer"demo:$BUILD_NUMBER'
 
             }
         }
