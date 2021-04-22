@@ -10,10 +10,6 @@ pipeline{
             stage('Build') {
                 steps{
 
-
-                    
-                    bat 'primer=Demo'
-                    
                     bat 'echo actualmente con la ejecucion $BUILD_NUMBER, ejecucion anterior $[BUILD_NUMBER-1]'
                     bat 'echo Ejecucion actual $BUILD_NUMBER'
 
